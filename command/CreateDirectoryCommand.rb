@@ -4,5 +4,7 @@ class CreateDirectoryCommand < Command
 
   def initialize
 
+  end
+
 
 end

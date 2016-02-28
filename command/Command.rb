@@ -18,7 +18,7 @@ class Command
 
   def verify?
 
-    puts "Are you sure you want to delete this? (y/n)"
+    puts "Are you sure you want to delete this (#{path})? (y/n)"
     verify = gets
     verify.chomp!
 

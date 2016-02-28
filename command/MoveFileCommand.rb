@@ -16,8 +16,8 @@ class MoveFileCommand < Command
 
   def execute
 
-    #does the file exist?
-    if File.exists? path
+    #does the file exist and is it a file?
+    if File.exists? path and !File.directory? path
       
       #store the text
       file = File.open(path, "r")
@@ -37,8 +37,8 @@ class MoveFileCommand < Command
 
   def undo
 
-    #does the file exist?
-    if File.exists? newLoc
+    #does the file exist and is it a file?
+    if File.exists? newLoc and !File.directory? path
 
       #store the text
       file = File.open(newLoc, "r")
