@@ -1,0 +1,31 @@
+require_relative 'Command'
+
+class DeleteFileCommand.rb < Command
+
+  def initialize(p)
+
+    self.description = "Deletes the file #{p}"
+
+    #store the path
+    self.path = p
+
+  end
+
+  def execute
+
+    #does the file exist?
+    if File.exists? path and !File.directory? path
+
+      #File.delete(path)
+      puts "Delete file at #{path}
+
+    end
+
+  end
+
+  def undo
+
+
+  end
+
+end

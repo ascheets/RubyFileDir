@@ -1,0 +1,11 @@
+require_relative 'Command'
+
+class RenameFileCommand < Command
+
+  def initialize(p,n)
+
+    self.description = "Renames the file at #{p} to #{n}"
+
+  end
+
+end

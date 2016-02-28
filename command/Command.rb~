@@ -1,0 +1,20 @@
+class Command
+
+  attr_accessor :description
+  attr_accessor :path
+
+
+  def initialize()
+
+  end
+
+  def execute
+
+  end
+
+  def undo
+
+  end
+
+
+end
