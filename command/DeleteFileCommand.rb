@@ -33,9 +33,13 @@ class DeleteFileCommand < Command
 
   def undo
 
-    file = File.new(path, "w+")
-    file.puts text
-    file.close
+    if !File.directory? path
+      
+      file = File.new(path, "w+")
+      file.puts text
+      file.close
+
+    end
 
   end
 

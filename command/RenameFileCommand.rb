@@ -16,7 +16,7 @@ class RenameFileCommand < Command
   def execute
 
     #does the file exist and is it a file?
-    if File.exists? path and !File.directory? path
+    if File.exists? path and !File.directory? path and !File.directory? newName
 
       File.rename(path, newName)
 
