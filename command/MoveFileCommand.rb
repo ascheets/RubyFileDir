@@ -47,7 +47,7 @@ class MoveFileCommand < Command
   def undo
 
     #does the file exist and is it a file?
-    if File.exists? newLoc and !File.directory? path
+    if File.exists? newLoc and !File.directory? path and !File.directory? newLoc
 
       #store the text
       file = File.open(newLoc, "r")

@@ -21,3 +21,13 @@ cc.addCommand(c5)
 puts cc.description
 
 cc.execute
+cc.undo
+
+
+cc.stepForward(2)
+
+cc.stepBackward(1)
+
+cc.stepForward(3)
+
+
