@@ -1,31 +1,21 @@
 #include all the class rb files
 Dir["./command/*.rb"].each { |file| require_relative file}
 
-c = CreateFileCommand.new("./test", "Hello world, dirp")
+#create a composite command
+
+cc = CompositeCommand.new
+
+#create some commands
+c1 = CreateFileCommand.new("./test", "Hello world, dirp")
 c2 = DeleteFileCommand.new("./testing")
-c21 = CreateFileCommand.new("./testing", "hello")
-c3 = RenameFileCommand.new("./test", "./testing")
-c4 = MoveFileCommand.new("./testing", "./testing/whoops")
-#c5 = CreateDirectoryCommand.new("./whatup")
-#c6 = DeleteDirectoryCommand.new("./tired")
+c3 = CreateFileCommand.new("./testing", "hello")
+c4 = RenameFileCommand.new("./test", "./testing")
+c5 = MoveFileCommand.new("./testing", "./testing/whoops")
 
-puts c.description
-puts c2.description
-puts c3.description
-puts c4.description
-#puts c5.description
-#puts c6.description
+cc.addCommand(c1)
+cc.addCommand(c2)
+cc.addCommand(c3)
+cc.addCommand(c4)
+cc.addCommand(c5)
 
-c.execute
-c21.execute
-c2.execute
-c2.undo
-c3.execute
-#c3.undo
-c.undo
-c4.execute
-c4.undo
-#c5.execute
-#c5.undo
-#c6.execute
-#c6.undo
+puts cc.description

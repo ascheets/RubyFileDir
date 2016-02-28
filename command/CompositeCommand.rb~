@@ -1,0 +1,32 @@
+require_relative 'Command'
+
+class CompositeCommand < Command
+
+  def initialize
+
+
+  end
+
+  def execute
+
+
+
+  end
+
+  def undo
+
+
+  end
+
+  def stepForward
+
+
+  end
+
+  def stepBackward
+
+
+  end
+
+
+end
