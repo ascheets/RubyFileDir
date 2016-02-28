@@ -3,6 +3,7 @@ require_relative 'Command'
 class MoveFileCommand < Command
 
   attr_accessor :newLoc
+  attr_accessor :newPath
   attr_accessor :text
 
   def initialize p, n
@@ -10,6 +11,11 @@ class MoveFileCommand < Command
     self.description = "Move the file #{p} to #{n}"
 
     self.path = p
+    self.newPath = n
+
+    stop = p.rindex("/")
+    n = p.slice(0,stop)
+ 
     self.newLoc = n
 
   end
@@ -17,8 +23,11 @@ class MoveFileCommand < Command
   def execute
 
     #does the file exist and is it a file?
-    if File.exists? path and !File.directory? path and Dir.exists? newLoc
+    if File.exists? path and !File.directory? path and Dir.exist? newLoc
+
+      #does the Dir exist?
       
+
       #store the text
       file = File.open(path, "r")
       self.text = file.read
@@ -27,7 +36,7 @@ class MoveFileCommand < Command
       File.delete(path)
 
       #create replica file at new path
-      file = File.new(newLoc, "w+")
+      file = File.new(newPath, "w+")
       file.puts text
       file.close            
 
