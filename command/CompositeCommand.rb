@@ -32,7 +32,7 @@ class CompositeCommand < Command
     #get sub array in case not all commands have been executed
     commandsSub = commands[0,commandPosition+1]
 
-    commandsSub.each do |command|
+    commandsSub.reverse_each do |command|
 
       command.undo
 

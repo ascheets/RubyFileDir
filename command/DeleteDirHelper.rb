@@ -31,9 +31,13 @@ class DeleteDirHelper < Command
   #at this point, creating dir should be next step, so just create
   def undo
 
-    #just create file at path
-    Dir.mkdir(path)
-    
+    if !Dir.exist? path
+
+      #just create file at path
+      Dir.mkdir(path)
+      
+    end
+
   end
 
 end
