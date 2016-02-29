@@ -1,0 +1,8 @@
+require_relative 'Command'
+
+class MoveDirectoryCommand < Command
+
+  def initialize
+
+
+end

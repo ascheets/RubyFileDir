@@ -15,8 +15,8 @@ c4 = RenameFileCommand.new("./testing/test2", "./testing/cheese")
 c5 = MoveFileCommand.new("./testing/cheese", "./testing/whoops/cheese")
 
 c6 = DeleteDirectoryCommand.new("./testing")
-#c6.execute
-#c6.undo
+c6.execute
+c6.undo
 
 cc.addCommand(c0)
 cc.addCommand(c01)

@@ -3,12 +3,21 @@ require_relative 'DeleteDirectoryCommand'
 
 class CreateDirectoryCommand < Command
 
+  attr_accessor :newLoc
+  attr_accessor :newPath
+
   def initialize(p)
 
     self.description = "Creates the directory: #{p}"
 
-    #store path
+    #store path, newLocation
     self.path = p
+    self.newPath = n
+
+    stop = p.rindex("/")
+    n = p.slice(0,stop)
+
+    self.newLoc = n
 
   end
 

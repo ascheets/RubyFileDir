@@ -25,9 +25,6 @@ class MoveFileCommand < Command
     #does the file exist and is it a file?
     if File.exists? path and !File.directory? path and Dir.exist? newLoc
 
-      #does the Dir exist?
-      
-
       #store the text
       file = File.open(path, "r")
       self.text = file.read
