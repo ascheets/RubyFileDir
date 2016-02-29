@@ -23,6 +23,14 @@ class DeleteDirectoryCommand < Command::CompositeCommand
     #call recursive delete on path
     recursiveDeleteSetup path
 
+    #one last DeleteDirHelper for original dir
+    helper = DeleteDirHelper.new(path)
+    addCommand helper
+
+    description
+
+    super()
+
   end
 
   def undo
@@ -81,8 +89,6 @@ class DeleteDirectoryCommand < Command::CompositeCommand
       end
 
     end
-
-    description
 
   end
 

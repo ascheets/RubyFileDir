@@ -4,7 +4,7 @@ class DeleteDirHelper < Command
 
   def initialize(p)
 
-    self.description = "Directory placeholder for DeleteDirectoryCommand, #{p}"
+    self.description = "Directory placeholder for DeleteDirectoryCommand"
     
     #store the path
     self.path = p
