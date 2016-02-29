@@ -12,12 +12,6 @@ class CreateDirectoryCommand < Command
 
     #store path, newLocation
     self.path = p
-    self.newPath = n
-
-    stop = p.rindex("/")
-    n = p.slice(0,stop)
-
-    self.newLoc = n
 
   end
 

@@ -33,6 +33,7 @@ class DeleteDirectoryCommand < CompositeCommand
       
       #actually deleting dir
       puts "Deleting dir..."
+      #calls execute on all comands (this is a composite command)
       super()
 
     end

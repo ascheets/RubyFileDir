@@ -13,10 +13,16 @@ class MoveFileCommand < Command
     self.path = p
     self.newPath = n
 
-    stop = p.rindex("/")
-    n = p.slice(0,stop)
+    #this removes last element of the path
+    stop = p.size - p.rindex("/") #add 2 for ./ at beginning
+    n = n.slice(0,n.size-stop+1)
  
     self.newLoc = n
+
+    #puts "Inside MoveFileCommand"
+    #puts "path: " + path
+    #puts "newPath: " + newPath
+    #puts "newLoc: " + newLoc
 
   end
 
