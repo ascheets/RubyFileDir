@@ -6,7 +6,8 @@ Dir["./command/*.rb"].each { |file| require_relative file}
 cc = CompositeCommand.new
 
 #create some commands
-c0 = CreateDirCommand.new("./testing")
+c0 = CreateDirectoryCommand.new("./testing")
+c01 = CreateDirectoryCommand.new("./testing/whoops")
 c1 = CreateFileCommand.new("./testing/test", "Hello world, dirp")
 c2 = DeleteFileCommand.new("./test")
 c3 = CreateFileCommand.new("./testing/test2", "hello")
@@ -14,9 +15,11 @@ c4 = RenameFileCommand.new("./testing/test2", "./testing/cheese")
 c5 = MoveFileCommand.new("./testing/cheese", "./testing/whoops/cheese")
 
 c6 = DeleteDirectoryCommand.new("./testing")
-c6.execute
-c6.undo
+#c6.execute
+#c6.undo
 
+cc.addCommand(c0)
+cc.addCommand(c01)
 cc.addCommand(c1)
 cc.addCommand(c2)
 cc.addCommand(c3)
