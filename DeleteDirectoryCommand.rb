@@ -9,8 +9,6 @@ class DeleteDirectoryCommand < Command::CompositeCommand
 
   def initialize(p)
 
-    super()
-
     self.description = "Deletes the directory: #{p}"
 
     #store path
@@ -59,22 +57,19 @@ class DeleteDirectoryCommand < Command::CompositeCommand
           #File.delete(currentPath)
           puts "elem is not a dir, create DeleteFileCommand, add to commands"
           dfc = DeleteFileCommand.new(currentPath)
-          addCommand dfc
+          puts dfc.to_s
+          #addCommand dfc
         elsif Dir.entries(currentPath).size <= 2
           #if dir is empty, delete, dir is empty but
           #size is 2 for "." and ".."
           puts "Empty dir, create DeleteDirHelper, add to commands"
           helper = DeleteDirHelper.new(currentPath)
-          addCommand helper
+          puts helper.to_s
+          #addCommand helper
         else
           #call recursiveDelete on elem
           puts "Dir is not empty, jumping in"
           recursiveDeleteSetup currentPath
-          puts "Just went through dir"
-          puts "Empty dir, create DeleteDirHelper, add to commands"
-          puts "Dir: " + currentPath
-          helper = DeleteDirHelper.new(currentPath)
-          addCommand helper
         end
       else
         puts "Elem is not of interest"
@@ -82,7 +77,7 @@ class DeleteDirectoryCommand < Command::CompositeCommand
 
     end
 
-    description
+    #description
 
   end
 

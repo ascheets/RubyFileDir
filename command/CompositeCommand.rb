@@ -67,7 +67,10 @@ class CompositeCommand < Command
   end
   
   def addCommand c
-
+    
+    #puts "Inside addCommand: " +  c.to_s 
+    #puts "Commands: " + self.commands.to_s
+    
     self.commands << c
 
   end
