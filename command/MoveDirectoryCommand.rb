@@ -25,11 +25,11 @@ class MoveDirectoryCommand < CompositeCommand
     self.newLoc = n
     self.oldLoc = path.slice(0,p.rindex("/"))
 
-    #puts "New location: " + newLoc.to_s
-    #puts "Old location: " + oldLoc.to_s
+    puts "New location: " + newLoc.to_s
+    puts "Old location: " + oldLoc.to_s
 
     #does the dir exist?
-    if Dir.exist? newLoc and Dir.exist? path
+    if Dir.exist? newLoc and Dir.exist? oldLoc
 
       #this function should make a list of commands that...
       #when executed should move dir through deleting and creating files and dirs
@@ -54,7 +54,7 @@ class MoveDirectoryCommand < CompositeCommand
       #direction we actually want
       commands.reverse_each do |command|
 
-        puts command.description
+        #puts command.description
         command.execute
 
 
@@ -70,30 +70,25 @@ class MoveDirectoryCommand < CompositeCommand
   def undo
 
     #does the dir exist?
-    if Dir.exist? newLoc and Dir.exist? oldLoc
-
-      #this function should make a list of commands that...
-      #when executed should move dir through deleting and creating files and dirs
-      recursiveMoveDirSetup path
-
-      #MoveDirHelper for original dir
-      helper = MoveDirHelper.new(path, newLoc + path.slice(1,path.size-1))
-      addCommand helper
-
-      #puts "Forward direction order: "
-      #description
+    if Dir.exist? newPath and Dir.exist? oldLoc
 
       #actually moving dir
-      puts "Moving dir #{path}..."
+      puts "Moving dir #{newPath}..."
+      puts "oldLoc: #{oldLoc}"
       
       #direction we actually want
       commands.reverse_each do |command|
 
-        puts command.description
+        puts "inside reverse undo"
+        command.description
         command.undo
-
-
+ 
       end
+
+      puts "undo commands all run in reverse order"
+
+      c = DeleteDirectoryCommand.new(newPath)
+      c.execute
       
     end
     

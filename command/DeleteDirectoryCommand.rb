@@ -21,7 +21,7 @@ class DeleteDirectoryCommand < CompositeCommand
     if Dir.exist? path
 
       #call recursive delete on path
-      puts "Setting up commands to delete dir..."
+      #puts "Setting up commands to delete dir..."
 
       recursiveDeleteSetup path
 
@@ -32,7 +32,7 @@ class DeleteDirectoryCommand < CompositeCommand
       #description
       
       #actually deleting dir
-      puts "Deleting dir..."
+      #puts "Deleting dir..."
       #calls execute on all comands (this is a composite command)
       super()
 

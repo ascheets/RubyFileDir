@@ -1,6 +1,7 @@
 #include all the class rb files
 Dir["./command/*.rb"].each { |file| require_relative file}
 
+
 def setup
 
   #create a composite command
@@ -57,17 +58,5 @@ end
 
 puts "Running setup"
 setup
-
-
-#puts "Testing MoveDirectoryCommand"
-#puts
-c7 = MoveDirectoryCommand.new("./testing", "./cheesing")
-c7.execute
-#c7.undo
-
-puts "Testing RenameDirectoryCommand"
 puts
-#c8 = RenameDirectoryCommand.new("./testing", "./cheesing")
-#c8.execute
-#c8.undo
-
+puts

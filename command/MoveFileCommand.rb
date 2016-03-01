@@ -3,6 +3,7 @@ require_relative 'Command'
 class MoveFileCommand < Command
 
   attr_accessor :newLoc
+  attr_accessor :oldLoc
   attr_accessor :newPath
   attr_accessor :text
 
@@ -18,11 +19,13 @@ class MoveFileCommand < Command
     n = n.slice(0,n.size-stop+1)
  
     self.newLoc = n
+    self.oldLoc = path.slice(0,p.rindex("/"))
 
     #puts "Inside MoveFileCommand"
     #puts "path: " + path
     #puts "newPath: " + newPath
     #puts "newLoc: " + newLoc
+    #puts "oldLoc: " + oldLoc
 
   end
 
@@ -50,14 +53,14 @@ class MoveFileCommand < Command
   def undo
 
     #does the file exist and is it a file?
-    if File.exists? newLoc and !File.directory? path and !File.directory? newLoc
+    if File.exists? newPath and !File.directory? newPath and Dir.exist? oldLoc
 
       #store the text
-      file = File.open(newLoc, "r")
+      file = File.open(newPath, "r")
       self.text = file.read
 
       #delete old file
-      File.delete(newLoc)
+      File.delete(newPath)
 
       #create file at old path
       file = File.new(path, "w+")
